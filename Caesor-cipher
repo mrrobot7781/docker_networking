@@ -1,0 +1,23 @@
+text = input("Enter Text: ")
+
+key = 3
+
+enc = ""
+
+for ch in text:
+
+    enc += chr(ord(ch)+key)
+
+print("Encrypted:",enc)
+
+dec = ""
+
+for ch in enc:
+
+    dec += chr(ord(ch)-key)
+
+print("Decrypted:",dec)
+
+
+#enc = sp.getoutput(f'echo "{text}" | openssl enc -aes-256-cbc -a -pass pass:1234')
+#
