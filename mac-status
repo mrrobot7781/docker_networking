@@ -1,0 +1,10 @@
+import subprocess as sp
+
+ip = sp.getoutput("hostname -I")
+print("IP:", ip)
+
+mac = sp.getoutput("cat /sys/class/net/eth0/address")
+print("MAC:", mac)
+
+status = sp.getoutput("cat /sys/class/net/eth0/operstate")
+print("Status:", status)
