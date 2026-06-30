@@ -1,0 +1,16 @@
+import requests
+import time
+
+urls = input("Enter URLs: ").split()
+
+for url in urls:
+
+    start = time.time()
+
+    r = requests.get(url)
+
+    end = time.time()
+
+    print(url)
+    print("Status:", r.status_code)
+    print("Time:", end-start)
