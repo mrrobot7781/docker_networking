@@ -1,0 +1,16 @@
+import subprocess as sp
+
+output = sp.getoutput("df -h /")
+
+for line in output.split("\n")[1:]:
+
+    usage = line.split()[4]
+
+    usage = usage.replace("%","")
+
+    usage = int(usage)
+
+    if usage > 80:
+        print("Disk Usage High")
+    else:
+        print("Disk Usage Normal")
