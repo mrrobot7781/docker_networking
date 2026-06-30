@@ -1,0 +1,25 @@
+total = 0
+error = 0
+count = {}
+
+with open("access.log") as f:
+
+    for line in f:
+
+        total += 1
+
+        if "404" in line:
+            error += 1
+
+        ip = line.split()[0]
+
+        if ip in count:
+            count[ip] += 1
+        else:
+            count[ip] = 1
+
+print("Total Requests:", total)
+print("404 Errors:", error)
+
+for ip in count:
+    print(ip, count[ip])
