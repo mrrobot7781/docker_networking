@@ -1,0 +1,20 @@
+count = {}
+
+with open("auth.log") as f:
+
+    for line in f:
+
+        if "Failed password" in line:
+
+            ip = line.split()[-1]
+
+            if ip in count:
+                count[ip] += 1
+            else:
+                count[ip] = 1
+
+for ip in count:
+
+    if count[ip] > 5:
+        print("Suspicious IP:", ip)
+        print("Attempts:", count[ip])
