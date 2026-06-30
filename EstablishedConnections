@@ -1,38 +1,17 @@
-import hashlib
+import subprocess as sp
 
-password = input("Create Password: ")
+output = sp.getoutput("netstat -ant | grep ESTABLISHED")
 
-upper = False
-lower = False
-digit = False
-special = False
+count = {}
 
-for ch in password:
+for line in output.split("\n"):
 
-    if ch.isupper():
-        upper = True
+    ip = line.split()[4].split(":")[0]
 
-    elif ch.islower():
-        lower = True
-
-    elif ch.isdigit():
-        digit = True
-
+    if ip in count:
+        count[ip] += 1
     else:
-        special = True
+        count[ip] = 1
 
-if len(password) >= 8 and upper and lower and digit and special:
-    print("Strong Password")
-else:
-    print("Weak Password")
-
-stored = hashlib.sha256(password.encode()).hexdigest()
-
-login = input("Enter Password: ")
-
-check = hashlib.sha256(login.encode()).hexdigest()
-
-if stored == check:
-    print("Login Successful")
-else:
-    print("Wrong Password")
+for ip in count:
+    print(ip, count[ip])
