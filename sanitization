@@ -1,0 +1,6 @@
+text = input("Enter Input: ")
+
+if "'" in text or "OR" in text.upper() or "--" in text:
+    print("Potential Injection Detected")
+else:
+    print("Safe Input")
