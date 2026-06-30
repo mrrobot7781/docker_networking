@@ -1,0 +1,11 @@
+ports = input("Enter Ports: ").split()
+
+for port in ports:
+
+    print("iptables -A INPUT -p tcp --dport", port, "-j ACCEPT")
+
+
+port = input("Enter Port: ")
+
+print(f"firewall-cmd --permanent --add-port={port}/tcp")
+print("firewall-cmd --reload")
