@@ -1,0 +1,13 @@
+import re
+
+text = input("Enter Text: ")
+
+emails = re.findall(r"\S+@\S+", text)
+
+ips = re.findall(r"\d+\.\d+\.\d+\.\d+", text)
+
+urls = re.findall(r"https?://\S+", text)
+
+print("Emails:", emails)
+print("IPs:", ips)
+print("URLs:", urls)
