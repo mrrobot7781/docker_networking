@@ -1,0 +1,18 @@
+import subprocess as sp
+
+job = input("Enter Cron Job: ")
+
+output = sp.getoutput("crontab -l")
+
+if job in output:
+    print("Cron Job Found")
+
+else:
+    output = output + "\n" + job
+
+    with open("cron.txt", "w") as f:
+        f.write(output)
+
+    sp.getoutput("crontab cron.txt")
+
+    print("Cron Job Added")
