@@ -1,0 +1,11 @@
+import socket
+
+domain = input("Enter Domain: ")
+
+ip = socket.gethostbyname(domain)
+
+print("IP Address:", ip)
+
+name = socket.gethostbyaddr(ip)
+
+print("Reverse DNS:", name[0])
