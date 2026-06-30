@@ -1,0 +1,17 @@
+import subprocess as sp
+
+services = ["ssh","nginx","mysql"]
+
+for service in services:
+
+    output = sp.getoutput(f"systemctl is-active {service}")
+
+    if output == "active":
+        print(service,"Running")
+
+    else:
+        print(service,"Stopped")
+
+        sp.getoutput(f"systemctl restart {service}")
+
+        print(service,"Restarted")
